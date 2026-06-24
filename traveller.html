@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>South India Tourism — Discover Paradise</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#C9973A;--gold-light:#F5E6C8;--gold-dark:#8B6520;
+  --emerald:#1B6B4A;--emerald-light:#E8F5EE;--emerald-dark:#0D3D2A;
+  --terracotta:#C4552A;--cream:#FDF9F2;
+  --ink:#1C1C1E;--ink-soft:#3D3D3F;--muted:#6E6E73;
+  --border:#E5E0D5;--white:#FFFFFF;
+  --shadow:0 2px 20px rgba(0,0,0,0.10);--shadow-lg:0 8px 40px rgba(0,0,0,0.14);
+}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+img{display:block}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(253,249,242,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px}
+.nav-logo{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--emerald-dark)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);transition:color .2s}
+.nav-links a:hover{color:var(--emerald)}
+.nav-cta{background:var(--emerald);color:#fff;padding:8px 20px;border-radius:24px;font-size:14px;font-weight:500}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:4px;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink)}
+
+/* HERO */
+.hero{min-height:94vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:#0D3D2A}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.52;transition:opacity 1s}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(13,61,42,.85) 0%,rgba(13,61,42,.55) 60%,rgba(27,107,74,.3) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:100px 5vw 70px;max-width:800px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,151,58,.2);border:1px solid rgba(201,151,58,.45);color:#F5E6C8;padding:6px 18px;border-radius:24px;font-size:13px;font-weight:500;letter-spacing:.5px;margin-bottom:26px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,74px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:22px}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero p{font-size:clamp(15px,2vw,19px);color:rgba(255,255,255,.75);max-width:560px;margin:0 auto 38px;font-weight:300}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--ink);padding:14px 32px;border-radius:32px;font-weight:600;font-size:15px;transition:all .2s}
+.btn-primary:hover{background:#B8832A;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:#fff;padding:14px 32px;border-radius:32px;font-weight:500;font-size:15px;border:1.5px solid rgba(255,255,255,.42);transition:all .2s}
+.btn-outline:hover{background:rgba(255,255,255,.1)}
+.hero-stats{display:flex;gap:44px;justify-content:center;margin-top:56px;flex-wrap:wrap}
+.hero-stat .num{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--gold)}
+.hero-stat .lbl{font-size:13px;color:rgba(255,255,255,.55);margin-top:3px}
+.search-wrap{background:var(--white);border-radius:14px;display:flex;align-items:center;gap:10px;padding:12px 18px;box-shadow:var(--shadow-lg);max-width:520px;margin:34px auto 0;border:1px solid var(--border)}
+.search-wrap input{flex:1;border:none;outline:none;font-size:15px;font-family:'Inter',sans-serif;color:var(--ink);background:transparent}
+.search-wrap button{background:var(--emerald);color:#fff;border:none;padding:8px 18px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer}
+
+/* SECTIONS */
+section{padding:80px 5vw}
+.inner{max-width:1240px;margin:0 auto}
+.sec-tag{display:inline-block;background:var(--emerald-light);color:var(--emerald);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:24px;margin-bottom:14px}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(26px,3.8vw,42px);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:10px}
+.sec-sub{font-size:16px;color:var(--muted);max-width:540px;line-height:1.7}
+.sec-hd{margin-bottom:48px}
+
+/* FILTER */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:34px}
+.fbtn{background:var(--white);border:1.5px solid var(--border);color:var(--ink-soft);padding:8px 18px;border-radius:24px;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s}
+.fbtn:hover,.fbtn.active{background:var(--emerald);border-color:var(--emerald);color:#fff}
+
+/* DEST CARDS */
+.dest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px}
+.dest-card{background:var(--white);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:all .28s;cursor:pointer;border:1px solid var(--border)}
+.dest-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.card-img{position:relative;height:224px;overflow:hidden;background:var(--emerald-light)}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
+.dest-card:hover .card-img img{transform:scale(1.07)}
+.card-img .tag{position:absolute;top:13px;left:13px;background:rgba(13,61,42,.88);color:#fff;font-size:11px;font-weight:600;letter-spacing:.7px;text-transform:uppercase;padding:5px 11px;border-radius:18px;backdrop-filter:blur(4px)}
+.card-img .state{position:absolute;top:13px;right:13px;background:rgba(201,151,58,.9);color:#fff;font-size:11px;font-weight:600;padding:5px 11px;border-radius:18px}
+.card-img .rating-badge{position:absolute;bottom:13px;right:13px;background:rgba(255,255,255,.92);color:var(--gold-dark);font-size:12px;font-weight:700;padding:4px 10px;border-radius:10px;display:flex;align-items:center;gap:4px}
+.card-body{padding:20px}
+.card-name{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.card-sub{font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px}
+.card-desc{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:12px}
+.card-meta{display:flex;align-items:center;gap:14px;margin-bottom:13px}
+.card-meta span{display:flex;align-items:center;gap:5px;font-size:12.5px;color:var(--muted)}
+.card-meta svg{width:13px;height:13px;flex-shrink:0}
+.card-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.cpill{background:var(--emerald-light);color:var(--emerald);font-size:11.5px;padding:4px 9px;border-radius:10px;font-weight:500}
+.card-cta{display:inline-flex;align-items:center;gap:6px;color:var(--emerald);font-size:13.5px;font-weight:600;border:none;background:none;cursor:pointer;padding:0;transition:gap .2s}
+.card-cta:hover{gap:10px}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.overlay.open{display:flex}
+.modal{background:var(--white);border-radius:24px;max-width:880px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.modal-x{position:absolute;top:16px;right:16px;background:rgba(0,0,0,.12);border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;font-size:18px;color:var(--ink-soft)}
+.modal-x:hover{background:rgba(0,0,0,.2)}
+.modal-hero{height:310px;overflow:hidden;border-radius:24px 24px 0 0;position:relative;background:var(--emerald-light)}
+.modal-hero img{width:100%;height:100%;object-fit:cover}
+.modal-hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 55%)}
+.modal-title-block{position:absolute;bottom:22px;left:26px;color:#fff}
+.modal-title-block h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:700}
+.modal-title-block p{font-size:13.5px;opacity:.8;margin-top:2px}
+.modal-body{padding:26px 30px 30px}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--border);margin-bottom:22px}
+.tab{background:none;border:none;padding:9px 17px;font-size:14px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1px;transition:all .2s}
+.tab.on{color:var(--emerald);border-bottom-color:var(--emerald)}
+.tp{display:none}.tp.on{display:block}
+.hist-txt{font-size:14.5px;color:var(--ink-soft);line-height:1.85}
+.places-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-top:6px}
+.pitem{background:var(--emerald-light);border-radius:12px;overflow:hidden;border:1px solid rgba(27,107,74,.12)}
+.pitem-img{height:90px;overflow:hidden;background:var(--emerald-dark);position:relative}
+.pitem-img img{width:100%;height:100%;object-fit:cover}
+.pitem-info{padding:9px 10px}
+.pitem-info p{font-size:12.5px;font-weight:600;color:var(--emerald-dark)}
+.pitem-info small{font-size:11px;color:var(--emerald)}
+
+/* GALLERY */
+.gal-bg{background:var(--white);border-top:1px solid var(--border)}
+.gal-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:230px 230px;gap:14px}
+.gitem{border-radius:16px;overflow:hidden;position:relative;background:var(--emerald-light)}
+.gitem.sp2{grid-row:span 2}
+.gitem img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gitem:hover img{transform:scale(1.05)}
+.gitem-label{position:absolute;bottom:0;left:0;right:0;padding:10px 14px;background:linear-gradient(to top,rgba(0,0,0,.55),transparent);color:#fff;font-size:13px;font-weight:600}
+
+/* SEASON BANNER */
+.season-wrap{background:var(--emerald-dark);border-radius:22px;padding:44px 48px;display:flex;gap:48px;flex-wrap:wrap;align-items:center}
+.season-wrap h3{font-family:'Playfair Display',serif;font-size:26px;color:#fff;margin-bottom:8px}
+.season-wrap p{color:rgba(255,255,255,.7);font-size:14.5px;max-width:380px}
+.season-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.spill{padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600}
+.sp-peak{background:rgba(201,151,58,.25);color:#F5C842}
+.sp-good{background:rgba(101,198,135,.22);color:#7FEBA1}
+.sp-off{background:rgba(255,255,255,.1);color:rgba(255,255,255,.5)}
+.season-right{flex:1;min-width:220px;color:rgba(255,255,255,.75);font-size:14px;line-height:1.9}
+.season-right strong{color:#fff}
+
+/* REVIEWS */
+.rev-bg{background:var(--white);border-top:1px solid var(--border)}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+.rcard{background:var(--cream);border-radius:16px;padding:22px;border:1px solid var(--border);transition:box-shadow .2s}
+.rcard:hover{box-shadow:var(--shadow)}
+.stars{display:flex;gap:2px;margin-bottom:10px}
+.star{color:var(--gold);font-size:15px}
+.star.e{color:#ddd}
+.rtext{font-size:13.5px;color:var(--ink-soft);line-height:1.72;margin-bottom:14px;font-style:italic}
+.rauthor{display:flex;align-items:center;gap:10px}
+.ravatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
+.rname{font-weight:600;font-size:13.5px;color:var(--ink)}
+.rdest{font-size:12px;color:var(--muted)}
+
+/* ADD REVIEW */
+.add-rev{margin-top:46px;background:var(--emerald-light);border-radius:20px;padding:32px}
+.add-rev h3{font-family:'Playfair Display',serif;font-size:23px;font-weight:700;color:var(--emerald-dark);margin-bottom:18px}
+.rform{display:grid;gap:13px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:12.5px;font-weight:600;color:var(--emerald-dark)}
+.fg input,.fg select,.fg textarea{padding:9px 13px;border:1.5px solid var(--border);border-radius:9px;font-size:14px;font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);outline:none;transition:border .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--emerald)}
+.fg textarea{resize:vertical;min-height:86px}
+.star-sel{display:flex;gap:7px}
+.sbtn{background:none;border:none;font-size:26px;cursor:pointer;color:#ccc;transition:color .2s;line-height:1}
+.sbtn.on,.sbtn:hover{color:var(--gold)}
+.subm{background:var(--emerald);color:#fff;border:none;padding:12px 30px;border-radius:30px;font-size:14.5px;font-weight:600;cursor:pointer;transition:background .2s}
+.subm:hover{background:var(--emerald-dark)}
+.ok{display:none;background:var(--white);color:var(--emerald);padding:13px 18px;border-radius:11px;font-weight:500;margin-top:6px;border:1px solid rgba(27,107,74,.25);font-size:14px}
+
+/* FOOTER */
+footer{background:var(--emerald-dark);color:rgba(255,255,255,.68);padding:56px 5vw 28px}
+.ft{max-width:1240px;margin:0 auto}
+.fg-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.fg-brand p{font-size:13.5px;margin-top:10px;line-height:1.75;max-width:240px}
+.fcol h4{font-size:13.5px;font-weight:600;color:#fff;margin-bottom:14px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:7px;font-size:13.5px}
+.fcol ul li a{color:rgba(255,255,255,.58);transition:color .2s}
+.fcol ul li a:hover{color:var(--gold)}
+.ft-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:12.5px;flex-wrap:wrap;gap:8px}
+.ft-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff}
+.ft-logo span{color:var(--gold)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .fg-grid{grid-template-columns:1fr 1fr}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gitem.sp2{grid-row:auto}
+  .frow{grid-template-columns:1fr}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .season-wrap{padding:28px}
+}
+@media(max-width:600px){
+  .hero-content{padding:110px 5vw 60px}
+  section{padding:52px 5vw}
+  .fg-grid{grid-template-columns:1fr}
+  .dest-grid{grid-template-columns:1fr}
+  .modal-body{padding:16px 18px 22px}
+  .modal-hero{height:200px}
+  .tab{padding:8px 11px;font-size:13px}
+  .modal-title-block h2{font-size:24px}
+  .gal-grid{grid-template-columns:1fr;grid-template-rows:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">South India <span>Tourism</span></div>
+    <ul class="nav-links">
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#plan">Best Time</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <a href="#destinations" class="nav-cta">Explore Now</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1600&q=80&auto=format&fit=crop" alt="Kerala backwaters" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Incredible South India
+    </div>
+    <h1>Where Every Journey Becomes a <em>Legend</em></h1>
+    <p>Ancient temples, emerald backwaters, misty hill stations & sacred shores across Tamil Nadu and Kerala</p>
+    <div class="hero-btns">
+      <a href="#destinations" class="btn-primary">Explore Destinations</a>
+      <a href="#reviews" class="btn-outline">Read Stories</a>
+    </div>
+    <div class="search-wrap">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search destinations, experiences..." id="searchInput" oninput="doFilter()">
+      <button onclick="doFilter()">Search</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">12</div><div class="lbl">Destinations</div></div>
+      <div class="hero-stat"><div class="num">500+</div><div class="lbl">Attractions</div></div>
+      <div class="hero-stat"><div class="num">2</div><div class="lbl">States</div></div>
+      <div class="hero-stat"><div class="num">1M+</div><div class="lbl">Happy Visitors</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="inner">
+    <div class="sec-hd">
+      <span class="sec-tag">Explore Places</span>
+      <h2 class="sec-title">12 Unmissable Destinations</h2>
+      <p class="sec-sub">From Kerala's emerald backwaters to Tamil Nadu's sacred temples — each place tells a timeless story.</p>
+    </div>
+    <div class="filter-bar" id="filterBar">
+      <button class="fbtn active" onclick="filterTag('All',this)">All Places</button>
+      <button class="fbtn" onclick="filterTag('Kerala',this)">Kerala</button>
+      <button class="fbtn" onclick="filterTag('Tamil Nadu',this)">Tamil Nadu</button>
+      <button class="fbtn" onclick="filterTag('Hill Station',this)">Hill Stations</button>
+      <button class="fbtn" onclick="filterTag('Temple',this)">Temples</button>
+      <button class="fbtn" onclick="filterTag('Nature',this)">Nature</button>
+      <button class="fbtn" onclick="filterTag('Beach',this)">Beaches</button>
+    </div>
+    <div class="dest-grid" id="destGrid"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gal-bg" id="gallery">
+  <div class="inner">
+    <div class="sec-hd">
+      <span class="sec-tag">Visual Journey</span>
+      <h2 class="sec-title">Beauty in Every Frame</h2>
+      <p class="sec-sub">A glimpse of the landscapes, temples, and wonders that await you.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gitem sp2">
+        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&q=80&auto=format&fit=crop" alt="Kerala Backwaters" loading="lazy">
+        <div class="gitem-label">Kerala Backwaters</div>
+      </div>
+      <div class="gitem">
+        <img src="https://images.unsplash.com/photo-1597074866923-dc0589150358?w=600&q=80&auto=format&fit=crop" alt="Munnar Tea Gardens" loading="lazy">
+        <div class="gitem-label">Munnar Tea Gardens</div>
+      </div>
+      <div class="gitem">
+        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80&auto=format&fit=crop" alt="Meenakshi Temple" loading="lazy">
+        <div class="gitem-label">Meenakshi Temple</div>
+      </div>
+      <div class="gitem">
+        <img src="https://images.pexels.com/photos/6364535/pexels-photo-6364535.jpeg?w=600&q=80&auto=format&fit=crop" alt="Athirappilly Waterfall" loading="lazy">
+        <div class="gitem-label">Athirappilly Falls</div>
+      </div>
+      <div class="gitem">
+        <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80&auto=format&fit=crop" alt="Kanyakumari Sunrise" loading="lazy">
+        <div class="gitem-label">Kanyakumari Sunrise</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEST TIME -->
+<section id="plan">
+  <div class="inner">
+    <div class="season-wrap">
+      <div style="flex:1;min-width:240px">
+        <h3>Best Time to Visit</h3>
+        <p>Plan your South India journey according to season for the most magical experience.</p>
+        <div class="season-pills">
+          <span class="spill sp-peak">Oct–Feb ⭐ Peak Season</span>
+          <span class="spill sp-good">Mar–May 🌸 Shoulder</span>
+          <span class="spill sp-off">Jun–Sep 🌧 Monsoon</span>
+        </div>
+      </div>
+      <div class="season-right">
+        <p><strong>Winter (Oct–Feb):</strong> Ideal weather, temple festivals, clear skies for hill stations</p>
+        <p><strong>Summer (Mar–May):</strong> Hill stations bloom, waterfalls at peak, fewer crowds</p>
+        <p><strong>Monsoon (Jun–Sep):</strong> Lush green landscapes, Athirappilly and Wayanad transform</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="rev-bg" id="reviews">
+  <div class="inner">
+    <div class="sec-hd">
+      <span class="sec-tag">Traveller Stories</span>
+      <h2 class="sec-title">What Our Visitors Say</h2>
+      <p class="sec-sub">Real experiences from travellers who explored South India's wonders.</p>
+    </div>
+    <div class="rev-grid" id="revGrid"></div>
+    <div class="add-rev">
+      <h3>Share Your Experience</h3>
+      <div class="rform">
+        <div class="frow">
+          <div class="fg"><label>Your Name</label><input type="text" id="rN" placeholder="e.g. Priya Sharma"></div>
+          <div class="fg"><label>Destination Visited</label>
+            <select id="rD">
+              <option value="">Select destination...</option>
+              <option>Alleppey</option><option>Munnar</option><option>Wayanad</option>
+              <option>Athirappilly</option><option>Kumarakom</option><option>Madurai</option>
+              <option>Thanjavur</option><option>Rameswaram</option><option>Kanyakumari</option>
+              <option>Ooty</option><option>Kodaikanal</option><option>Kollimalai</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Your Rating</label>
+          <div class="star-sel" id="starSel">
+            <button class="sbtn" data-v="1">★</button><button class="sbtn" data-v="2">★</button>
+            <button class="sbtn" data-v="3">★</button><button class="sbtn" data-v="4">★</button>
+            <button class="sbtn" data-v="5">★</button>
+          </div>
+        </div>
+        <div class="fg"><label>Your Review</label><textarea id="rT" placeholder="Tell us what made your trip unforgettable..."></textarea></div>
+        <button class="subm" onclick="submitRev()">Submit Review →</button>
+        <div class="ok" id="okMsg">✓ Thank you! Your review has been published.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="fg-grid">
+      <div class="fg-brand">
+        <div class="ft-logo">South India <span>Tourism</span></div>
+        <p>Discover the cultural grandeur, natural wonders, and spiritual heritage of Tamil Nadu and Kerala.</p>
+      </div>
+      <div class="fcol"><h4>Explore</h4>
+        <ul>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#gallery">Photo Gallery</a></li>
+          <li><a href="#plan">Best Time to Visit</a></li>
+          <li><a href="#reviews">Traveller Reviews</a></li>
+        </ul>
+      </div>
+      <div class="fcol"><h4>Tamil Nadu</h4>
+        <ul>
+          <li><a href="#">Madurai</a></li><li><a href="#">Thanjavur</a></li>
+          <li><a href="#">Rameswaram</a></li><li><a href="#">Kanyakumari</a></li>
+          <li><a href="#">Ooty</a></li><li><a href="#">Kodaikanal</a></li>
+          <li><a href="#">Kollimalai</a></li>
+        </ul>
+      </div>
+      <div class="fcol"><h4>Kerala</h4>
+        <ul>
+          <li><a href="#">Alleppey</a></li><li><a href="#">Munnar</a></li>
+          <li><a href="#">Wayanad</a></li><li><a href="#">Athirappilly</a></li>
+          <li><a href="#">Kumarakom</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2025 South India Tourism. Crafted with ❤️ for travellers.</span>
+      <span style="color:rgba(255,255,255,.4)">Inspired by Tamil Nadu & Kerala Tourism</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="ov" onclick="closeOv(event)">
+  <div class="modal" id="mBox">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div class="modal-hero">
+      <img id="mImg" src="" alt="">
+      <div class="modal-hero-grad"></div>
+      <div class="modal-title-block">
+        <h2 id="mName"></h2>
+        <p id="mSub"></p>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="tabs">
+        <button class="tab on" onclick="swTab('hist',this)">History & Culture</button>
+        <button class="tab" onclick="swTab('places',this)">Famous Places</button>
+        <button class="tab" onclick="swTab('tips',this)">Travel Tips</button>
+      </div>
+      <div class="tp on" id="tp-hist"><p class="hist-txt" id="mHist"></p></div>
+      <div class="tp" id="tp-places"><div class="places-grid" id="mPlaces"></div></div>
+      <div class="tp" id="tp-tips"><div id="mTips"></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DESTS = [
+  {id:'alleppey',name:'Alleppey',sub:'Venice of the East',state:'Kerala',
+   tags:['Kerala','Nature','Beach'],rating:'4.8',best:'Oct–Mar',
+   img:'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=700&q=80&auto=format&fit=crop',
+   heroImg:'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1200&q=80&auto=format&fit=crop',
+   desc:'Palm-fringed backwaters, tranquil canals, and iconic houseboat cruises in Kerala\'s Venice.',
+   history:'Alleppey — officially Alappuzha — has a history steeped in maritime trade dating back centuries. Arab, Chinese, and European traders frequented these shores when it was a major Indian Ocean port. Under the Kingdom of Travancore, it became the hub of Kerala\'s coir industry. The British established trading posts here and developed the intricate canal network partly for commerce. Today these canals are immortalized by kettuvallams — traditional rice boats converted into floating lodges that glide through emerald waterways draped in coconut palms. The Nehru Trophy Boat Race, begun in 1952, draws thousands each August for one of India\'s most thrilling water sports spectacles.',
+   places:[
+     {name:'Alleppey Beach',type:'Beach',img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=70&auto=format&fit=crop'},
+     {name:'Vembanad Lake',type:'Backwater',img:'https://images.pexels.com/photos/10490679/pexels-photo-10490679.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Krishnapuram Palace',type:'Heritage',img:'https://images.pexels.com/photos/10933045/pexels-photo-10933045.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Pathiramanal Island',type:'Nature',img:'https://images.pexels.com/photos/37185468/pexels-photo-37185468.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Nehru Trophy Race',type:'Festival',img:'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=400&q=70&auto=format&fit=crop'},
+     {name:'Marari Beach',type:'Beach',img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> October–March. Book houseboats 2–3 months in advance for weekends. Try local karimeen (pearl spot fish) curry. Attend the Nehru Trophy Boat Race (second Saturday of August). The southern backwaters near Punnamada Lake are quieter and more scenic.'},
+
+  {id:'munnar',name:'Munnar',sub:'Kashmir of South India',state:'Kerala',
+   tags:['Kerala','Hill Station','Nature'],rating:'4.9',best:'Sep–Mar',
+   img:'https://images.unsplash.com/photo-1597074866923-dc0589150358?w=700&q=80&auto=format&fit=crop',
+   heroImg:'https://images.unsplash.com/photo-1597074866923-dc0589150358?w=1200&q=80&auto=format&fit=crop',
+   desc:'Rolling tea plantations, misty peaks, and rare Neelakurinji flowers in this enchanting hill station.',
+   history:'Munnar derives from "Moonu Aar" — meaning three rivers — where the Muthirapuzha, Nallathanni and Kundala rivers converge at 1600 metres. Once the summer retreat of the British colonial government in South India, the highlands were transformed into tea estates from the 1870s onwards by the Kanan Devan Hills Plantations Company. Before British arrival, the region was under the Poonjar royal family. Today Munnar is home to the extraordinarily rare Neelakurinji flower (Strobilanthes kunthiana) which blooms once every 12 years, turning entire hillsides violet-blue — an event so remarkable that the Eravikulam National Park was created specifically to protect it. The park also harbours the endangered Nilgiri Tahr mountain goat.',
+   places:[
+     {name:'Eravikulam NP',type:'Wildlife',img:'https://images.pexels.com/photos/14844301/pexels-photo-14844301.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Mattupetty Dam',type:'Scenic',img:'https://images.pexels.com/photos/30964634/pexels-photo-30964634.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Tea Museum',type:'Culture',img:'https://images.pexels.com/photos/4578637/pexels-photo-4578637.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Anamudi Peak',type:'Trek',img:'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=70&auto=format&fit=crop'},
+     {name:'Echo Point',type:'Nature',img:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&q=70&auto=format&fit=crop'},
+     {name:'Attukad Falls',type:'Waterfall',img:'https://images.pexels.com/photos/16069812/pexels-photo-16069812.jpeg?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> September–March. Avoid April–May peak crowds. Start each morning with a walk through the tea estates at sunrise — the mist and golden light are extraordinary. Try fresh Munnar tea and homemade eucalyptus chocolate. Camp at Top Station for Neelakurinji views (blooms in 2030).'},
+
+  {id:'wayanad',name:'Wayanad',sub:'Land of Paddy Fields & Tribes',state:'Kerala',
+   tags:['Kerala','Nature','Hill Station'],rating:'4.7',best:'Oct–May',
+   img:'https://images.pexels.com/photos/14844302/pexels-photo-14844302.jpeg?w=700&q=80&auto=format&fit=crop',
+   heroImg:'https://images.pexels.com/photos/14844302/pexels-photo-14844302.jpeg?w=1200&q=80&auto=format&fit=crop',
+   desc:'Ancient tribal heritage, dense forests, coffee estates, and 5000-year-old cave paintings.',
+   history:'Wayanad — derived from "Vayal Nadu" meaning land of paddy fields — is one of Kerala\'s most historically significant districts. Indigenous tribes including the Paniya, Kuruma, and Adiya have called these forests home for thousands of years. Edakkal Caves contain Neolithic petroglyphs dating to 5000 BCE — among India\'s oldest pictorial writings, depicting humans, animals, and symbols in astonishing detail. Tippu Sultan\'s army marched through here during the 18th century Mysore Wars. The British later developed it as a coffee, tea, and spice-growing region. Today Wayanad is a UNESCO-recognised biodiversity hotspot within the Nilgiri Biosphere Reserve, harbouring tigers, leopards, elephants and rare species.',
+   places:[
+     {name:'Edakkal Caves',type:'Heritage',img:'https://images.pexels.com/photos/14944882/pexels-photo-14944882.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Banasura Dam',type:'Scenic',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70&auto=format&fit=crop'},
+     {name:'Chembra Peak',type:'Trek',img:'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=70&auto=format&fit=crop'},
+     {name:'Pookode Lake',type:'Nature',img:'https://images.pexels.com/photos/34645211/pexels-photo-34645211.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Wayanad Wildlife',type:'Wildlife',img:'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=400&q=70&auto=format&fit=crop'},
+     {name:'Soochipara Falls',type:'Waterfall',img:'https://images.pexels.com/photos/27728559/pexels-photo-27728559.jpeg?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> October–May. Visit Edakkal Caves before 9 AM. Tribal homestays in Thirunelly offer authentic food and forest experiences. Carry rain gear even in October. Jeep safaris into Muthanga Wildlife Sanctuary have good elephant sighting rates.'},
+
+  {id:'athirappilly',name:'Athirappilly',sub:'Niagara of India',state:'Kerala',
+   tags:['Kerala','Nature'],rating:'4.8',best:'Jun–Jan',
+   img:'https://images.pexels.com/photos/32535593/pexels-photo-32535593.jpeg?w=700&q=80&auto=format&fit=crop',
+   heroImg:'https://images.pexels.com/photos/32535593/pexels-photo-32535593.jpeg?w=1200&q=80&auto=format&fit=crop',
+   desc:'Kerala\'s largest waterfall plunges 80 feet through the pristine Sholayar rainforest.',
+   history:'Athirappilly sits at the entrance of the Sholayar forest ranges — meeting point of three indigenous tribal habitats: the Kadar, Muthuvan, and Malayan. The waterfall and surrounding forest have been sacred to these communities for centuries. The Vazhachal Forest Division hosts one of India\'s few remaining populations of the endangered Great Hornbill (with a wingspan exceeding 150 cm) and the Lion-tailed Macaque. Over 50 Malayalam and Bollywood films have been shot here — its thundering cascade and emerald forest have become synonymous with cinematic romance. The falls cascade 80 feet wide and 80 feet tall at peak monsoon — earning the nickname "Niagara of India."',
+   places:[
+     {name:'Athirappilly Falls',type:'Waterfall',img:'https://images.pexels.com/photos/6364535/pexels-photo-6364535.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Vazhachal Falls',type:'Waterfall',img:'https://images.pexels.com/photos/247041/pexels-photo-247041.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Sholayar Forest',type:'Wildlife',img:'https://images.pexels.com/photos/13905714/pexels-photo-13905714.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Charpa Falls',type:'Waterfall',img:'https://images.pexels.com/photos/11466690/pexels-photo-11466690.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Thumboormuzhi Dam',type:'Nature',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70&auto=format&fit=crop'},
+     {name:'Teak Forest Trail',type:'Trek',img:'https://images.pexels.com/photos/15984100/pexels-photo-15984100.jpeg?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> June–January for full water flow; monsoon is spectacular. Entry ticket required. The best viewpoint is a 500-metre walk from parking. Go early morning (8–9 AM) before crowds. The downstream area near Vazhachal is less crowded and equally beautiful.'},
+
+  {id:'kumarakom',name:'Kumarakom',sub:'Bird Paradise of Kerala',state:'Kerala',
+   tags:['Kerala','Nature'],rating:'4.6',best:'Sep–Mar',
+   img:'https://images.pexels.com/photos/5274437/pexels-photo-5274437.jpeg?w=700&q=80&auto=format&fit=crop',
+   heroImg:'https://images.pexels.com/photos/5274437/pexels-photo-5274437.jpeg?w=1200&q=80&auto=format&fit=crop',
+   desc:'Islands on Vembanad Lake, famous for Siberian migratory birds and luxury backwater resorts.',
+   history:'Kumarakom sits on the shores of Vembanad, Kerala\'s largest lake spanning 2033 sq km. The area was historically a rubber plantation before being converted into a tourism destination. The Kumarakom Bird Sanctuary — carved from a former rubber estate — attracts Siberian cranes, egrets, herons, teal, waterfowl, and cuckoos migrating from Ladakh, Siberia, and the Himalayas every November. Booker Prize winner Arundhati Roy set parts of "The God of Small Things" in these very backwaters — the novel describes the beauty of Kottayam\'s coconut-fringed waterways with hypnotic precision. Today Kumarakom is synonymous with Ayurvedic rejuvenation, luxury houseboat experiences, and birdwatching at dawn.',
+   places:[
+     {name:'Kumarakom Bird Sanctuary',type:'Wildlife',img:'https://images.pexels.com/photos/37040350/pexels-photo-37040350.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Vembanad Lake',type:'Backwater',img:'https://images.pexels.com/photos/28700142/pexels-photo-28700142.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Kumarakom Beach',type:'Beach',img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=70&auto=format&fit=crop'},
+     {name:'Ayurvedic Centres',type:'Wellness',img:'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=70&auto=format&fit=crop'},
+     {name:'Kottayam Town',type:'Culture',img:'https://images.pexels.com/photos/36832390/pexels-photo-36832390.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Pathiramanal Island',type:'Nature',img:'https://images.pexels.com/photos/145525/pexels-photo-145525.jpeg?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> September–March. Book resort stays 2 months in advance. Take early morning boat rides at 6 AM into the bird sanctuary — October to February for peak migratory season. Ayurvedic packages of 7+ days are deeply rejuvenating.'},
+
+  {id:'madurai',name:'Madurai',sub:'Temple City of South India',state:'Tamil Nadu',
+   tags:['Tamil Nadu','Temple'],rating:'4.9',best:'Oct–Mar',
+   img:'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=700&q=80&auto=format&fit=crop',
+   heroImg:'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200&q=80&auto=format&fit=crop',
+   desc:'One of the world\'s oldest cities, home to the awe-inspiring Meenakshi Amman Temple.',
+   history:'Madurai is one of the oldest continuously inhabited cities on Earth — over 2,500 years old — and the cultural capital of Tamil civilisation. It was the seat of the powerful Pandya Kingdom and later the Nayak rulers, who built many of its magnificent structures. The city\'s layout was designed in a lotus pattern around the Meenakshi Amman Temple — one of the finest examples of Dravidian architecture, with 14 soaring gopurams (gateway towers) adorned with thousands of hand-carved, vibrantly painted stone sculptures. Tamil Sangam literature — 2000-year-old classical poetry of extraordinary sophistication — was composed and debated here in the Three Sangams. The name Madurai means "sweetness," from the divine nectar that fell from Lord Shiva\'s matted locks when he danced here.',
+   places:[
+     {name:'Meenakshi Temple',type:'Temple',img:'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&q=70&auto=format&fit=crop'},
+     {name:'Thirumalai Nayakkar Palace',type:'Heritage',img:'https://images.pexels.com/photos/35620983/pexels-photo-35620983.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Gandhi Memorial Museum',type:'Museum',img:'https://images.pexels.com/photos/34929254/pexels-photo-34929254.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Alagar Kovil',type:'Temple',img:'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&q=70&auto=format&fit=crop'},
+     {name:'Vandiyur Teppakulam',type:'Heritage',img:'https://images.pexels.com/photos/30373182/pexels-photo-30373182.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Pazhamudircholai',type:'Nature',img:'https://images.pexels.com/photos/12604357/pexels-photo-12604357.jpeg?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> October–March. Visit Meenakshi Temple at dawn (5:30 AM) for the serene abhishekam ceremony. The Evening Aarti at 9 PM is profoundly atmospheric. Try Kari Dosa and Jigarthanda (local rose milk dessert). The temple\'s Hall of Thousand Pillars is a must.'},
+
+  {id:'thanjavur',name:'Thanjavur',sub:'Rice Bowl of Tamil Nadu',state:'Tamil Nadu',
+   tags:['Tamil Nadu','Temple'],rating:'4.8',best:'Nov–Feb',
+   img:'https://images.pexels.com/photos/28464755/pexels-photo-28464755.jpeg?w=700&q=80&auto=format&fit=crop',
+   heroImg:'https://images.pexels.com/photos/28464755/pexels-photo-28464755.jpeg?w=1200&q=80&auto=format&fit=crop',
+   desc:'UNESCO-listed Brihadeeswarar Temple — the crown jewel of the Chola Empire\'s cultural legacy.',
+   history:'Thanjavur (Tanjore) was the capital of the great Chola dynasty, which at its zenith controlled territories from Sri Lanka to Southeast Asia. Emperor Raja Raja Chola I built the Brihadeeswarar Temple in 1010 CE — it stands 216 feet tall, the single tallest temple tower in India and a UNESCO World Heritage Site. The Cholas were master architects, brilliant bronze sculptors, and great patrons of Tamil literature and classical music. The famous Tanjore painting style — characterised by rich colours, intricate detail, and 22-carat gold foil — was born here and remains a living art tradition. The Saraswathi Mahal Library, one of Asia\'s oldest libraries, houses over 60,000 rare manuscripts in multiple languages including palm-leaf texts dating to the 16th century.',
+   places:[
+     {name:'Brihadeeswarar Temple',type:'UNESCO',img:'https://images.pexels.com/photos/33069295/pexels-photo-33069295.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Thanjavur Royal Palace',type:'Heritage',img:'https://images.pexels.com/photos/15146377/pexels-photo-15146377.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Saraswathi Mahal Library',type:'Museum',img:'https://images.pexels.com/photos/12752175/pexels-photo-12752175.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Gangaikonda Cholapuram',type:'Heritage',img:'https://images.pexels.com/photos/33818289/pexels-photo-33818289.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Tanjore Art Gallery',type:'Culture',img:'https://images.pexels.com/photos/12752426/pexels-photo-12752426.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Airavatesvara Temple',type:'Temple',img:'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> November–February. Brihadeeswarar is most beautiful at sunrise — arrive at 6 AM. Note: the 80-tonne granite dome on top has no mortar — it rests only by its own weight. Purchase authentic Tanjore bronze statuettes and paintings from Government Emporium.'},
+
+  {id:'rameswaram',name:'Rameswaram',sub:'Sacred Island of India',state:'Tamil Nadu',
+   tags:['Tamil Nadu','Temple','Beach'],rating:'4.7',best:'Oct–Apr',
+   img:'https://images.pexels.com/photos/34411632/pexels-photo-34411632.jpeg',
+   heroImg:'https://images.pexels.com/photos/34411632/pexels-photo-34411632.jpeg?w=400&q=70&auto=format&fit=crop',
+   desc:'Sacred Char Dham island with the world\'s longest temple corridor and the legendary Pamban Bridge.',
+   history:'Rameswaram is one of Hinduism\'s most sacred Char Dham pilgrimage sites, believed to be where Lord Rama worshipped Lord Shiva before crossing to Lanka to rescue Sita. The Ramanathaswamy Temple features the world\'s longest temple corridor at 1212 metres — a breathtaking colonnade of 1212 granite pillars stretching into infinity. The island was connected to mainland India by the Pamban Bridge in 1914 — for decades India\'s longest sea bridge at 2065 metres. Born on this island, former President and "Missile Man" Dr. APJ Abdul Kalam\'s birthplace and memorial are beloved landmarks. The point where the Bay of Bengal meets the Indian Ocean here creates a unique natural phenomenon of distinct coloured waters visible from the beach.',
+   places:[
+     {name:'Ramanathaswamy Temple',type:'Temple',img:'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&q=70&auto=format&fit=crop'},
+     {name:'Pamban Bridge',type:'Engineering',img:'https://images.pexels.com/photos/13621055/pexels-photo-13621055.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Dhanushkodi',type:'Heritage',img:'https://images.pexels.com/photos/36323742/pexels-photo-36323742.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'APJ Abdul Kalam Memorial',type:'Memorial',img:'https://images.pexels.com/photos/5255109/pexels-photo-5255109.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Agni Theertham',type:'Sacred',img:'https://images.pexels.com/photos/35775960/pexels-photo-35775960.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Five-faced Hanuman Temple',type:'Temple',img:'https://images.pexels.com/photos/37003806/pexels-photo-37003806.jpeg?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> October–April. Pilgrims take 22 sacred baths (theerthams) within the temple. Visit Dhanushkodi — the ghost town at India\'s tip — at dawn. The Pamban Bridge train crossing is one of India\'s most dramatic rail journeys. Stay overnight for the full pilgrim experience.'},
+
+  {id:'kanyakumari',name:'Kanyakumari',sub:"Land's End of India",state:'Tamil Nadu',
+   tags:['Tamil Nadu','Beach'],rating:'4.9',best:'Oct–Feb',
+   img:'https://images.pexels.com/photos/6687168/pexels-photo-6687168.jpeg?w=700&q=80&auto=format&fit=crop',
+   heroImg:'https://images.pexels.com/photos/6687168/pexels-photo-6687168.jpeg?w=1200&q=80&auto=format&fit=crop',
+   desc:'India\'s southernmost tip where three seas meet and the sunrise paints the sky in gold.',
+   history:'Kanyakumari is the southernmost point of the Indian subcontinent, where the Bay of Bengal, Arabian Sea, and Indian Ocean converge in a swirling spectacle of colour. Named after the goddess Kanyakumari (the virgin goddess, a form of Parvati), this sacred site has drawn pilgrims since antiquity. Ancient Tamil Sangam poetry celebrated it as Kumari Kandam. On a rock in these waters, Swami Vivekananda meditated for three days in 1892 and received the divine vision that sent him to the 1893 Chicago Parliament of Religions — where he first introduced Hinduism to the Western world. The Vivekananda Rock Memorial built here in 1970 is one of independent India\'s most inspiring structures. On full moon days, the sun and moon can simultaneously be seen rising and setting on either side of the horizon.',
+   places:[
+     {name:'Kanyakumari Temple',type:'Temple',img:'https://images.pexels.com/photos/36750988/pexels-photo-36750988.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Vivekananda Rock',type:'Memorial',img:'https://images.pexels.com/photos/14545727/pexels-photo-14545727.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Thiruvalluvar Statue',type:'Landmark',img:'https://images.pexels.com/photos/32906785/pexels-photo-32906785.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Gandhi Memorial',type:'Heritage',img:'https://images.pexels.com/photos/36998160/pexels-photo-36998160.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Sunset Point',type:'Scenic',img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=70&auto=format&fit=crop'},
+     {name:'Padmanabhapuram Palace',type:'Heritage',img:'https://images.pexels.com/photos/33974103/pexels-photo-33974103.jpeg?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> October–February. Wake at 5 AM for the sunrise — it is genuinely life-changing. Book the early ferry to Vivekananda Rock (crowds arrive by 7 AM). The sunset from the Thiruvalluvar Statue side is equally stunning. November–January full moons are especially magical.'},
+
+  {id:'ooty',name:'Ooty',sub:'Queen of Hill Stations',state:'Tamil Nadu',
+   tags:['Tamil Nadu','Hill Station','Nature'],rating:'4.6',best:'Mar–Jun',
+   img:'https://images.pexels.com/photos/9411139/pexels-photo-9411139.jpeg?w=700&q=80&auto=format&fit=crop',
+   heroImg:'https://images.pexels.com/photos/9411139/pexels-photo-9411139.jpeg?w=1200&q=80&auto=format&fit=crop',
+   desc:'Colonial hill station with a UNESCO toy train, botanical gardens, and refreshing Nilgiri air.',
+   history:'Ooty (Udhagamandalam) was "discovered" by British officer John Sullivan in 1819 and built as the summer headquarters of the Madras Presidency. The indigenous Toda people — with their distinctive barrel-shaped huts and unique pastoral culture — have inhabited the Nilgiris for centuries and remain here today. The Nilgiri Mountain Railway, a UNESCO World Heritage Site since 2005, winds through 208 curves across 46 kilometres using a rare rack-and-pinion system invented in Switzerland — one of only a handful of such railways in the world. The Government Botanical Gardens, established in 1848, contain 650 species of plants including a 20-million-year-old fossil tree trunk. Ooty\'s Rose Bowl — home to international cricket matches — is the highest cricket ground in India at 2240 metres.',
+   places:[
+     {name:'Nilgiri Mountain Railway',type:'UNESCO',img:'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=400&q=70&auto=format&fit=crop'},
+     {name:'Government Botanical Gardens',type:'Nature',img:'https://images.pexels.com/photos/33253258/pexels-photo-33253258.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Ooty Lake',type:'Scenic',img:'https://images.pexels.com/photos/30964634/pexels-photo-30964634.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Doddabetta Peak',type:'Trek',img:'https://images.pexels.com/photos/15390769/pexels-photo-15390769.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Wenlock Downs',type:'Scenic',img:'https://images.pexels.com/photos/8141325/pexels-photo-8141325.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Mudumalai Wildlife',type:'Wildlife',img:'https://images.pexels.com/photos/13257031/pexels-photo-13257031.jpeg?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> March–June (summer bloom), September–November (clear skies). Take the toy train from Mettupalayam to Ooty — book weeks in advance. Try homemade chocolate, handmade oils and fresh garden strawberries. Carry a warm jacket even in summer evenings.'},
+
+  {id:'kodaikanal',name:'Kodaikanal',sub:'Princess of Hill Stations',state:'Tamil Nadu',
+   tags:['Tamil Nadu','Hill Station','Nature'],rating:'4.7',best:'Apr–Jun',
+   img:'https://images.pexels.com/photos/21363801/pexels-photo-21363801.jpeg?w=700&q=80&auto=format&fit=crop',
+   heroImg:'https://images.pexels.com/photos/21363801/pexels-photo-21363801.jpeg?w=1200&q=80&auto=format&fit=crop',
+   desc:'Misty lakes, pine forests, and the star-shaped Kodaikanal Lake make this an eternal paradise.',
+   history:'Kodaikanal — "Gift of the Forest" in Tamil — sits at 2133 metres in the Palani Hills. American missionaries founded this hill station in 1845 as a refuge from the lowland heat, and the Kodaikanal International School, established in 1901, is one of Asia\'s oldest international schools. The star-shaped man-made Kodaikanal Lake, created in 1863, is the centrepiece of town — its unique five-pointed shape visible from above. The Kurinji flower (Strobilanthes kunthiana) blooms every 12 years, turning hillsides purple — the next bloom is expected in 2032. Bryant Park, established in 1908, houses over 330 species of roses, dahlias, and exotic trees. Coaker\'s Walk — a 1-km path along the escarpment — offers vertiginous views down to the Tamil Nadu plains 2000 metres below.',
+   places:[
+     {name:'Kodaikanal Lake',type:'Scenic',img:'https://images.pexels.com/photos/9411154/pexels-photo-9411154.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Pillar Rocks',type:'Nature',img:'https://images.pexels.com/photos/5303088/pexels-photo-5303088.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:"Coaker's Walk",type:'Trek',img:'https://images.pexels.com/photos/35761660/pexels-photo-35761660.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Bryant Park',type:'Garden',img:'https://images.pexels.com/photos/13372165/pexels-photo-13372165.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Silver Cascade Falls',type:'Waterfall',img:'https://images.pexels.com/photos/12062786/pexels-photo-12062786.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Berijam Lake',type:'Nature',img:'https://images.pexels.com/photos/33283375/pexels-photo-33283375.jpeg?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> April–June, September–November. Rent a bicycle around the lake — best in early morning mist. Visit Green Valley View (Suicide Point) at sunset for the most dramatic panorama. Try homemade chocolate and eucalyptus oil. Berijam Lake requires forest department permission.'},
+
+  {id:'kollimalai',name:'Kollimalai',sub:'The Fortress Mountain',state:'Tamil Nadu',
+   tags:['Tamil Nadu','Nature','Hill Station'],rating:'4.5',best:'Oct–Jan',
+   img:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80&auto=format&fit=crop',
+   heroImg:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80&auto=format&fit=crop',
+   desc:'A hidden gem with 70 hairpin bends, cascading waterfalls, and ancient Arapaleeswarar Temple.',
+   history:'Kollimalai — meaning "Fortress Mountain" — rises to 1300 metres in the Namakkal district. Ancient Tamil Sangam literature celebrates it as one of the five great hill ranges of classical Tamil country. The name reflects its historical impregnability — the treacherous road with 70 hairpin bends made it virtually unconquerable. The summit temple of Arapaleeswarar (Lord Shiva) is of deep antiquity, drawing pilgrims who believe the deity grants protection to the hill communities. The Agaya Gangai waterfall — believed by tribal communities to originate from the sacred Himalayas — plunges 300 feet through pristine shola forest, accessible only by a challenging 3-km forest trek. The mountain is also known for its rare medicinal plants used in traditional Siddha medicine for centuries.',
+   places:[
+     {name:'Arapaleeswarar Temple',type:'Temple',img:'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&q=70&auto=format&fit=crop'},
+     {name:'Agaya Gangai Falls',type:'Waterfall',img:'https://images.pexels.com/photos/34696645/pexels-photo-34696645.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Solakadu Forest',type:'Nature',img:'https://images.pexels.com/photos/5120876/pexels-photo-5120876.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'70 Hairpin Bends View',type:'Scenic',img:'https://images.pexels.com/photos/32462379/pexels-photo-32462379.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Coffee Estates',type:'Plantation',img:'https://images.pexels.com/photos/17589677/pexels-photo-17589677.jpeg?w=400&q=70&auto=format&fit=crop'},
+     {name:'Arappaleeswarar Falls',type:'Waterfall',img:'https://images.pexels.com/photos/14436966/pexels-photo-14436966.jpeg?w=400&q=70&auto=format&fit=crop'},
+   ],
+   tips:'<strong>Best time:</strong> October–January. The 70 hairpin bends are thrilling but take care in the early morning mist. Carry enough food, water, and cash (no ATMs on the hill). Start the trek to Agaya Gangai before 7 AM. The mountain is uncrowded — a genuine off-the-beaten-path gem.'}
+];
+
+const SEED_REVIEWS = [
+  {name:'Priya Sharma',dest:'Munnar',rating:5,text:'The tea plantations at golden hour are a sight I\'ll never forget. Woke at 5 AM to see mist roll over the hills — absolutely magical.',avatar:'PS',color:'#1B6B4A'},
+  {name:'Arjun Rajan',dest:'Alleppey',rating:5,text:'Spending a night on a houseboat in Alleppey was the highlight of our honeymoon. The silence of the backwaters at midnight, fireflies everywhere — pure heaven.',avatar:'AR',color:'#C9973A'},
+  {name:'Kavitha Nair',dest:'Madurai',rating:5,text:'Meenakshi Temple at dawn — 4000 sculptures, lamplight, a priest chanting ancient prayers. I cried. No temple has moved me like this in my life.',avatar:'KN',color:'#C4552A'},
+  {name:'Rajesh Kumar',dest:'Kanyakumari',rating:5,text:'Watching the sunrise from Vivekananda Rock is genuinely spiritual. Three oceans, one point, infinite sky. India\'s southernmost tip is its most emotionally resonant.',avatar:'RK',color:'#1B4B8A'},
+  {name:'Deepa Menon',dest:'Wayanad',rating:4,text:'Edakkal Caves blew my mind — 5000-year-old drawings! Wayanad\'s jungles are pristine. The tribal homestay gave me the most authentic Kerala experience.',avatar:'DM',color:'#6B4A1B'},
+  {name:'Suresh Pandian',dest:'Thanjavur',rating:5,text:'Brihadeeswarar Temple is overwhelming in scale. 1000 years old and still towering. The Chola bronzes in the museum are world-class. Tamil pride at its finest.',avatar:'SP',color:'#4A1B6B'},
+];
+
+let userReviews = [];
+let selStar = 0;
+let activeTag = 'All';
+
+function starsHtml(n){
+  return Array.from({length:5},(_,i)=>`<span class="star${i<n?'':' e'}">${i<n?'★':'★'}</span>`).join('');
+}
+
+function renderReviews(){
+  const all = [...SEED_REVIEWS, ...userReviews];
+  document.getElementById('revGrid').innerHTML = all.map(r=>`
+    <div class="rcard">
+      <div class="stars">${starsHtml(r.rating)}</div>
+      <p class="rtext">"${r.text}"</p>
+      <div class="rauthor">
+        <div class="ravatar" style="background:${r.color}">${r.avatar}</div>
+        <div><div class="rname">${r.name}</div><div class="rdest">📍 ${r.dest}</div></div>
+      </div>
+    </div>`).join('');
+}
+
+function renderDests(list){
+  document.getElementById('destGrid').innerHTML = list.map(d=>`
+    <div class="dest-card" onclick="openModal('${d.id}')">
+      <div class="card-img">
+        <img src="${d.img}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+        <span class="tag">${d.tags.find(t=>!['Kerala','Tamil Nadu'].includes(t))||d.tags[0]}</span>
+        <span class="state">${d.state}</span>
+        <span class="rating-badge">★ ${d.rating}</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-name">${d.name}</h3>
+        <p class="card-sub">${d.sub}</p>
+        <p class="card-desc">${d.desc}</p>
+        <div class="card-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Best: ${d.best}</span>
+        </div>
+        <div class="card-pills">${d.places.slice(0,3).map(p=>`<span class="cpill">${p.name}</span>`).join('')}</div>
+        <button class="card-cta" onclick="event.stopPropagation();openModal('${d.id}')">
+          Explore ${d.name}
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>`).join('');
+}
+
+function doFilter(){
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const filtered = DESTS.filter(d=>{
+    const tagOk = activeTag==='All' || d.tags.includes(activeTag) || d.state===activeTag;
+    const qOk = !q || d.name.toLowerCase().includes(q) || d.sub.toLowerCase().includes(q) || d.desc.toLowerCase().includes(q);
+    return tagOk && qOk;
+  });
+  renderDests(filtered);
+}
+
+function filterTag(tag, btn){
+  activeTag = tag;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  doFilter();
+}
+
+function openModal(id){
+  const d = DESTS.find(x=>x.id===id);
+  if(!d) return;
+  document.getElementById('mImg').src = d.heroImg;
+  document.getElementById('mImg').alt = d.name;
+  document.getElementById('mName').textContent = d.name;
+  document.getElementById('mSub').textContent = d.sub + ' · ' + d.state;
+  document.getElementById('mHist').textContent = d.history;
+  document.getElementById('mPlaces').innerHTML = d.places.map(p=>`
+    <div class="pitem">
+      <div class="pitem-img"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.style.background='var(--emerald-dark)'"></div>
+      <div class="pitem-info"><p>${p.name}</p><small>${p.type}</small></div>
+    </div>`).join('');
+  document.getElementById('mTips').innerHTML = `
+    <div style="background:var(--gold-light);border-radius:12px;padding:18px 20px;margin-bottom:14px">
+      <p style="font-weight:600;color:var(--gold-dark);margin-bottom:6px">🗓 Best Time to Visit</p>
+      <p style="color:var(--ink-soft);font-size:14px;font-weight:600">${d.best}</p>
+    </div>
+    <div style="background:var(--emerald-light);border-radius:12px;padding:18px 20px">
+      <p style="font-weight:600;color:var(--emerald-dark);margin-bottom:8px">💡 Travel Tips</p>
+      <p style="color:var(--ink-soft);font-size:14px;line-height:1.78">${d.tips}</p>
+    </div>`;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.tp').forEach(t=>t.classList.remove('on'));
+  document.querySelector('.tab').classList.add('on');
+  document.getElementById('tp-hist').classList.add('on');
+  document.getElementById('ov').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeOv(e){ if(e.target===document.getElementById('ov')) closeModal(); }
+function closeModal(){ document.getElementById('ov').classList.remove('open'); document.body.style.overflow=''; }
+
+function swTab(name, btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.tp').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('tp-'+name).classList.add('on');
+}
+
+document.querySelectorAll('.sbtn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    selStar = parseInt(b.dataset.v);
+    document.querySelectorAll('.sbtn').forEach((s,i)=>s.classList.toggle('on', i<selStar));
+  });
+});
+
+function submitRev(){
+  const n=document.getElementById('rN').value.trim();
+  const d=document.getElementById('rD').value;
+  const t=document.getElementById('rT').value.trim();
+  if(!n||!d||!t||!selStar){alert('Please fill in all fields and select a rating.');return;}
+  const cols=['#1B6B4A','#C9973A','#C4552A','#1B4B8A','#6B4A1B','#4A1B6B'];
+  userReviews.unshift({name:n,dest:d,rating:selStar,text:t,
+    avatar:n.split(' ').map(x=>x[0]).join('').toUpperCase().slice(0,2),
+    color:cols[Math.floor(Math.random()*cols.length)]});
+  renderReviews();
+  document.getElementById('rN').value='';
+  document.getElementById('rD').value='';
+  document.getElementById('rT').value='';
+  selStar=0;
+  document.querySelectorAll('.sbtn').forEach(b=>b.classList.remove('on'));
+  const ok=document.getElementById('okMsg');
+  ok.style.display='block';
+  setTimeout(()=>ok.style.display='none',3500);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{ renderDests(DESTS); renderReviews(); });
+</script>
+</body>
+</html>
